@@ -10,7 +10,7 @@ class SettingsContainer extends Component {
 
   onWorkSettingsChanged(newWorkSettings) {
     console.log('settings changed', newWorkSettings, this.props);
-    this.props.updateWorkSettings(newWorkSettings);
+    this.props.Actions.updateWorkSettings(newWorkSettings);
   }
 
   render() {
@@ -29,7 +29,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ActionCreators, dispatch);
+  return { Actions: bindActionCreators(ActionCreators, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsContainer);

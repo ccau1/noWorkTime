@@ -10,6 +10,7 @@ import styles from './styles.js';
 import CountDownDisplay from '../CountDownDisplay/CountDownDisplay';
 
 export default class StatDisplay extends Component {
+  timeUpdateInterval: number;
 
   static propTypes = {
     workSettings: React.PropTypes.shape({
@@ -26,31 +27,31 @@ export default class StatDisplay extends Component {
     view: React.PropTypes.string,
   };
 
-  componentWillMount() {
+  componentWillMount(): void {
     this.timeUpdateInterval = setInterval(() => {
       this.forceUpdate();
     }, 900);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     clearInterval(this.timeUpdateInterval);
   }
 
-  getTodayStart() {
+  getTodayStart(): number {
     const {hour, minute} = this.props.workSettings.dayStart;
     return (new Date()).setHours(hour, minute, 0, 0);
   }
 
-  getTodayEnd() {
+  getTodayEnd(): number {
     const {hour, minute} = this.props.workSettings.dayEnd;
     return (new Date()).setHours(hour, minute, 0, 0);
   }
 
-  isInDaysOfWeek(daysOfWeek, day) {
+  isInDaysOfWeek(daysOfWeek: number[], day: number): boolean {
     return daysOfWeek.indexOf(day) > -1;
   }
 
-  getMillisecondsWeekWorked() {
+  getMillisecondsWeekWorked(): number {
     const curDayOfWeek = (new Date()).getDay() - 1;
     const curTime = (new Date()).valueOf();
     const dayStart = this.getTodayStart();
@@ -79,11 +80,11 @@ export default class StatDisplay extends Component {
     const weeklyCompleted = this.getMillisecondsWeekWorked();
     const currentToEndOfDay = totalToday - dailyCompleted;
     const currentToEndOfWeek = totalWeekly - weeklyCompleted;
-    let dailyCompletedPercent = (dailyCompleted / totalDaily * 100).toFixed(2);
+    let dailyCompletedPercent = parseFloat((dailyCompleted / totalDaily * 100).toFixed(2));
     if (dailyCompletedPercent > 100) {
       dailyCompletedPercent = 100;
     }
-    let weeklyCompletedPercent = (weeklyCompleted / totalWeekly * 100).toFixed(2);
+    let weeklyCompletedPercent = parseFloat((weeklyCompleted / totalWeekly * 100).toFixed(2));
     if (weeklyCompletedPercent > 100) {
       weeklyCompletedPercent = 100;
     }

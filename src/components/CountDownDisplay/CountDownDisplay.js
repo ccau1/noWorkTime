@@ -7,11 +7,12 @@ import {
 import styles from './styles.js';
 
 export default class CountDownDisplay extends Component {
+
   static propTypes = {
     milliseconds: PropTypes.number,
   };
 
-  getTimeDiffParts(ms) {
+  getTimeDiffParts(ms: number): {days: number, hours: number, minutes: number, seconds: number} {
     let result = {};
     let secs = ms / 1000;
     let mins = secs / 60;

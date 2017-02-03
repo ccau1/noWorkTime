@@ -14,6 +14,10 @@ import StatDisplay from '../../components/StatDisplay/StatDisplay';
 
 
 export default class Dashboard extends Component {
+  state: {
+    statViews: any;
+    currentStatView: number;
+  }
 
   static propTypes = {
     workSettings: React.PropTypes.shape({
@@ -30,7 +34,7 @@ export default class Dashboard extends Component {
     user: React.PropTypes.object,
   };
 
-  constructor(props) {
+  constructor(props: any): void {
     super(props);
     this.state = {
       statViews: [
@@ -55,13 +59,13 @@ export default class Dashboard extends Component {
     };
   }
 
-  toggleStatDisplay() {
+  toggleStatDisplay(): void {
     this.setState({
       currentStatView: this.state.currentStatView + 1 === this.state.statViews.length ? 0 : ++this.state.currentStatView
     });
   }
 
-  openSettings() {
+  openSettings(): void {
     Actions.settings();
   }
 

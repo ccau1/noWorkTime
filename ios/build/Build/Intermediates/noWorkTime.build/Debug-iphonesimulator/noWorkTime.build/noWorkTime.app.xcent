@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>org.reactjs.native.example.noWorkTime</string>
+	<string>YQCB3JP8JN.org.reactjs.native.example.noWorkTime</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>org.reactjs.native.example.noWorkTime</string>
+		<string>YQCB3JP8JN.org.reactjs.native.example.noWorkTime</string>
 	</array>
 </dict>
 </plist>

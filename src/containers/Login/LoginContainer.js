@@ -15,7 +15,7 @@ class LoginContainer extends Component {
 
     onLoginSubmit(loginCred) {
       console.log('loginCred', loginCred);
-      this.props.signIn(loginCred.username, loginCred.password);
+      this.props.Actions.signIn(loginCred.username, loginCred.password);
       Actions.dashboard();
     }
 
@@ -36,7 +36,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ActionCreators, dispatch);
+  return { Actions: bindActionCreators(ActionCreators, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
