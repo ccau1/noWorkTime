@@ -11,6 +11,7 @@ import {
   Image,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import styles from './styles';
 import dismissKeyboard from 'dismissKeyboard';
 
 export default class Settings extends Component {
@@ -33,7 +34,7 @@ export default class Settings extends Component {
     onChange: React.PropTypes.func.isRequired,
   };
 
-  constructor(props: any) {
+  constructor(props: any): void {
     super(props);
 
     this.state = {
@@ -49,11 +50,11 @@ export default class Settings extends Component {
     }
   }
 
-  closeSettings() {
+  closeSettings(): void {
     Actions.pop();
   }
 
-  updateField(name: string, value: string|number) {
+  updateField(name: string, value: string|number): void {
     const valParsedInt = parseInt(value, 10);
     let newWorkSettings = {...this.state.workSettings.item};
     switch (name) {
@@ -86,7 +87,7 @@ export default class Settings extends Component {
     });
   }
 
-  validate(workSettings: any) {
+  validate(workSettings: any): {errors: any, isValid: boolean} {
     let result = {
       errors: [],
       isValid: true
@@ -219,70 +220,3 @@ export default class Settings extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  heading: {
-    marginTop: 50,
-    marginBottom: 50,
-    marginLeft: 20,
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: '#444',
-  },
-  subHeading: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#444',
-  },
-  btnCircleContainer: {
-    borderRadius: 40,
-    padding: 12,
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
-  btnCircleContainerActive: {
-    backgroundColor: '#2980b9',
-    borderRadius: 40,
-    padding: 12,
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
-  btnCircleActive: {
-    color: '#FFF'
-  },
-  inputNumber: {
-    height: 40,
-    backgroundColor: 'rgba(255,255,255,0.4)',
-    marginBottom: 20,
-    color: '#000',
-    paddingHorizontal: 10,
-    flex: 1,
-    width: 20,
-  },
-  input: {
-    height: 40,
-    backgroundColor: 'rgba(255,255,255,0.4)',
-    marginBottom: 20,
-    color: '#000',
-    paddingHorizontal: 10,
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0)',
-    width: null,
-    height: null,
-  },
-  settingsFormContainer: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  bottomContainer: {
-    alignItems: 'center',
-  },
-  btnClose: {
-    padding: 50,
-    color: '#000'
-  }
-});

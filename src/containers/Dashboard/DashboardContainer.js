@@ -9,7 +9,7 @@ import Dashboard from './Dashboard';
 
 class DashboardContainer extends Component {
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.props.Actions.signIn();
     this.props.Actions.getWorkSettings();
   }
@@ -23,14 +23,14 @@ class DashboardContainer extends Component {
 }
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state: any): any {
     return {
         user: state.user,
         workSettings: state.workSettings,
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any): any {
   return { Actions: bindActionCreators(ActionCreators, dispatch) };
 }
 

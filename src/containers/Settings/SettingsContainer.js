@@ -8,8 +8,7 @@ import { ActionCreators } from '../../actions';
 
 class SettingsContainer extends Component {
 
-  onWorkSettingsChanged(newWorkSettings) {
-    console.log('settings changed', newWorkSettings, this.props);
+  onWorkSettingsChanged(newWorkSettings: any) {
     this.props.Actions.updateWorkSettings(newWorkSettings);
   }
 
@@ -21,14 +20,14 @@ class SettingsContainer extends Component {
 }
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state: any): any {
     return {
         user: state.user,
         workSettings: state.workSettings,
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any): {Action: any} {
   return { Actions: bindActionCreators(ActionCreators, dispatch) };
 }
 

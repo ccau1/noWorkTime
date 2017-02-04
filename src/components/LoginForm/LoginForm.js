@@ -8,7 +8,7 @@ class LoginForm extends Component {
         onSubmit: PropTypes.func.isRequired,
     };
 
-    constructor(props) {
+    constructor(props: any): void {
         super(props);
 
         this.state = {

@@ -4,7 +4,6 @@ import { AsyncStorage } from 'react-native';
 export function getWorkSettings(username, password) {
   return (dispatch) => {
     AsyncStorage.getItem('workSettings').then(workSettings => {
-      console.log('ww', workSettings, JSON.parse(workSettings));
       const defaultWorkSettings = {
         dayStart: {
           hour: 9,

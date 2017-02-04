@@ -9,18 +9,17 @@ class LoginContainer extends Component {
     static propTypes = {
     };
 
-    constructor(props) {
+    constructor(props: any): void {
         super(props);
     }
 
-    onLoginSubmit(loginCred) {
+    onLoginSubmit(loginCred: {username: string, password: string}): void {
       console.log('loginCred', loginCred);
       this.props.Actions.signIn(loginCred.username, loginCred.password);
       Actions.dashboard();
     }
 
     render() {
-        console.log('props', this.props);
         return (
             <Login
               onSubmit={this.onLoginSubmit.bind(this)}
@@ -29,13 +28,13 @@ class LoginContainer extends Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: any): void {
     return {
         user: state.user,
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any): void {
   return { Actions: bindActionCreators(ActionCreators, dispatch) };
 }
 

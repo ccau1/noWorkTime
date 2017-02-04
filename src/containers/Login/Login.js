@@ -9,7 +9,7 @@ class Login extends Component {
       onSubmit: PropTypes.func.isRequired,
     };
 
-    constructor(props) {
+    constructor(props: any): void {
         super(props);
     }
 
