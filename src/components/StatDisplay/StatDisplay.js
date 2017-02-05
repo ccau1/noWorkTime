@@ -51,8 +51,13 @@ export default class StatDisplay extends Component {
     return daysOfWeek.indexOf(day) > -1;
   }
 
-  getMillisecondsWeekWorked(): number {
+  getCurrentDayOfWeek(): number {
     const curDayOfWeek = (new Date()).getDay() - 1;
+    return curDayOfWeek === -1 ? 6 : curDayOfWeek;
+  }
+
+  getMillisecondsWeekWorked(): number {
+    const curDayOfWeek = this.getCurrentDayOfWeek();
     const curTime = (new Date()).valueOf();
     const dayStart = this.getTodayStart();
     const dayEnd = this.getTodayEnd();
@@ -72,7 +77,7 @@ export default class StatDisplay extends Component {
   getStatDisplay() {
     const dayStart = this.getTodayStart();
     const dayEnd = this.getTodayEnd();
-    const isWorkdayToday = this.isInDaysOfWeek(this.props.workSettings.daysOfWeek, (new Date()).getDay() - 1);
+    const isWorkdayToday = this.isInDaysOfWeek(this.props.workSettings.daysOfWeek, this.getCurrentDayOfWeek());
     const totalDaily = dayEnd - dayStart;
     const totalWeekly = totalDaily * this.props.workSettings.daysOfWeek.length;
     const totalToday = isWorkdayToday ? totalDaily : 0;

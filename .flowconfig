@@ -1,16 +1,13 @@
 [ignore]
-.*/__tests__/.*
-.*\.ignore\.*
-.*/node_modules/.*
-.*/styled-components/src/.*
-# We vendor our src directory, which is not needed for type-checking
-.*/styled-components/src/.*
+
+
 
 [include]
 
-[libs]
+[libs
+./node_modules/fbjs/flow/lib
 # This is where your own flow-typed libdefs go
-
+flow-typed
 
 # These declarations are super explicit...
 # We want to show what libdef files we need to make
@@ -24,3 +21,5 @@
 # node_modules/styled-components/flow-typed/*.js
 
 [options]
+module.ignore_non_literal_requires=true
+suppress_type=$FlowIssue

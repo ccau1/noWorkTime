@@ -1,7 +1,10 @@
+/* @flow */
+
 import * as types from './types';
 import { AsyncStorage } from 'react-native';
+import type { WorkSettingsModel } from '../models';
 
-export function getWorkSettings(username, password) {
+export function getWorkSettings(username: string, password: string): any {
   return (dispatch) => {
     AsyncStorage.getItem('workSettings').then(workSettings => {
       const defaultWorkSettings = {
@@ -23,8 +26,8 @@ export function getWorkSettings(username, password) {
   };
 }
 
-export function updateWorkSettings(newWorkSettings) {
-  // AsyncStorage.setItem('workSettings', JSON.stringify(newWorkSettings));
+export function updateWorkSettings(newWorkSettings: WorkSettingsModel): {type: string, payload: WorkSettingsModel} {
+  AsyncStorage.setItem('workSettings', JSON.stringify(newWorkSettings));
   return {
     type: types.WORK_SETTINGS_UPDATE_COMPLETE,
     payload: newWorkSettings,

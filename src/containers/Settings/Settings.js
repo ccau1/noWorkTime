@@ -13,10 +13,11 @@ import {
 import { Actions } from 'react-native-router-flux';
 import styles from './styles';
 import dismissKeyboard from 'dismissKeyboard';
+import type {WorkSettingsModel} from '../../models/WorkSettings';
 
 export default class Settings extends Component {
   state: {
-    workSettings: any
+    workSettings: WorkSettingsModel
   };
 
   static propTypes = {
@@ -87,7 +88,7 @@ export default class Settings extends Component {
     });
   }
 
-  validate(workSettings: any): {errors: any, isValid: boolean} {
+  validate(workSettings: WorkSettingsModel): {errors: any, isValid: boolean} {
     let result = {
       errors: [],
       isValid: true

@@ -15,9 +15,12 @@ import StatDisplay from '../../components/StatDisplay/StatDisplay';
 
 export default class Dashboard extends Component {
   state: {
-    statViews: any;
+    statViews: {
+      title: string;
+      key: string;
+    };
     currentStatView: number;
-  }
+  };
 
   static propTypes = {
     workSettings: React.PropTypes.shape({
